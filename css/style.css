@@ -1,0 +1,54 @@
+
+.bg-color
+{
+    background-color: #17a2b8 ;
+}
+
+
+
+.text-color
+{
+    color: #17a2b8 ;
+}
+label
+{
+    font-size: 20px ;
+}
+
+.w-100>label::after
+{
+content: "*";
+color:red;
+font-size: 24px;
+}
+
+.btn-check:focus+.btn, .btn:focus
+{
+    box-shadow: none !important;
+}
+
+.fa-trash-can:hover 
+{
+color:rgba(255, 0, 0, 0.525);
+cursor: pointer;
+}
+
+.fa-angle-down
+{
+    animation-name:changeplace ;
+    animation-iteration-count:infinite  ;
+    animation-duration: 0.8s;
+    animation-play-state: running;
+    animation-direction:alternate
+}
+
+
+@keyframes changeplace
+{
+0%{transform: translateY(0%);}
+100%{transform: translateY(50%);}
+}
+input.search::placeholder
+{
+text-align: center;
+}
