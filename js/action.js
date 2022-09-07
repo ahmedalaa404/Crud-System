@@ -1,27 +1,52 @@
 // get inputs of html 
-var ProductName=document.getElementById("ProductName");
-var ProductCatgorey=document.getElementById("ProductCatgorey");
-var ProductPrice=document.getElementById("ProductPrice");
-var ProductDesc=document.getElementById('ProductDesc');
-var SearchProduct=document.getElementById("SearchProduct");
-
-
+let ProductName=document.getElementById("ProductName");
+let ProductCatgorey=document.getElementById("ProductCatgorey");
+let ProductPrice=document.getElementById("ProductPrice");
+let ProductDesc=document.getElementById('ProductDesc');
+let SearchProduct=document.getElementById("SearchProduct");
+let removeAll=document.getElementById('remove')
+let counter = document.getElementById('counter')
 
 // get button of html 
-var btnAdd=document.getElementById("btnAdd");
-var btnUpdate=document.getElementById("btnUpdate");
-varbtnDelete=document.getElementById("btnDelete");
+let btnAdd=document.getElementById("btnAdd");
+let btnUpdate=document.getElementById("btnUpdate");
+let btnDelete=document.getElementById("btnDelete");
 
 
 
 // get tbody of table to show  a data 
-var tbody=document.getElementById("tbody");
+let tbody=document.getElementById("tbody");
 
 
 // variable used in js to store Data 
-var store=[];
-var concat=``;
+let store;
+let concat=``;
 DateOFDay=new Date();
+
+
+// Function to retrieve Data of Local storage
+(function()
+{
+    if(localStorage.getItem("ProductItem")!=null)
+    {
+        store=JSON.parse(localStorage.getItem("ProductItem"))
+    }
+    else
+    {
+        store=[]
+    }
+    displayData();
+
+})()
+
+// function remove Data in local storage
+function clearData()
+{
+    localStorage.removeItem('ProductItem');
+    store=[];
+    displayData();
+}
+
 
 
 //  function add to object
@@ -36,9 +61,12 @@ Product=
     }
     store.push(Product);
     console.log("Aaaaaa")
-    showData();
+    localStorage.setItem('ProductItem',JSON.stringify(store));
+    // add data in local storage
+    displayData();
     makeInputsEmpty();
 }
+
 
 
 // function empty filds
@@ -51,10 +79,10 @@ function makeInputsEmpty()
 }
 
 
-function showData()
+function displayData()
 {
     concat=``;
-    for(var i=0 ; i<store.length;i++)
+    for(let i=0 ; i<store.length;i++)
     {
         concat +=`<tr class="table-light">
         <td>${i}</td>
@@ -72,7 +100,11 @@ function showData()
     </tr>`;
     }
     tbody.innerHTML=concat;
+    counter.innerHTML=store.length;
 }
+
+
+// save Data in lovcal Storage
 
 
 

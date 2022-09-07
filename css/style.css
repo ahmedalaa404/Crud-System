@@ -5,7 +5,6 @@
 }
 
 
-
 .text-color
 {
     color: #17a2b8 ;
@@ -13,6 +12,10 @@
 label
 {
     font-size: 20px ;
+}
+.icone-arrow-button
+{
+    z-index: -1;
 }
 
 .w-100>label::after
@@ -50,5 +53,21 @@ cursor: pointer;
 }
 input.search::placeholder
 {
-text-align: center;
+text-align: center !important;
+}
+.d-allData
+{
+ cursor: pointer;  
+}
+
+.d-allData:hover
+{
+color:rgb(133, 29, 0);
+}
+
+.counter-Item
+{
+    width: 30px;    
+    height: 30px;
+    background-color: rgba(22, 17, 17, 0.896);
 }

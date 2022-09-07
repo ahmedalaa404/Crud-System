@@ -18,11 +18,15 @@
 
 <body>
 
+    <!-- 
+    <div class="layer w-100 vh-100 bg-black position-fixed">
 
-    <div class="Crude py-5">
+    </div> -->
+
+    <div class="Crude">
         <div class="container-lg container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 shadow">
                     <div class="w-100 d-flex justify-content-center align-items-center">
                         <div class="w-100">
                             <h1 class="text-center">Crude System</h1>
@@ -39,60 +43,88 @@
                             <textarea name="" type="text" class="form-control mt-2 mb-3" id="ProductDesc" cols="10"
                                 rows="4" required></textarea>
 
-                            <div class="text-center py-1">
-                                <button onclick="addProduct()" class="btn btn-outline-dark px-4 mx-3 rounded-pill" id="btnAdd">Add</button>
+                            <div class="text-center py-1 position-relative">
+                                <button onclick="addProduct()" class="btn btn-outline-dark px-4 mx-3 rounded-pill"
+                                    id="btnAdd">Add</button>
                                 <button onclick="test()" class="btn btn-outline-primary px-4 mx-3 d-none rounded-pill"
                                     id="btnUpdate">Update</button>
                                 <button onclick="test()" class="btn btn-outline-danger px-4 mx-3 d-none rounded-pill"
                                     id="btnDelete">Delete</button>
-                                    <button onclick="makeInputsEmpty()" class="btn btn-outline-warning px-4 mx-3 rounded-pill"
-                                    id="btnDelete">Clear Form</button>
-                            </div>
-                            <div class="d-flex flex-column align-items-center">
-                                <label for="SearchProduct" class="mt-5">Search Product :</label>
-                                <input type="text" class="form-control my-4 search" placeholder="&#xF002; Search"
-                                    style="font-family:Arial, FontAwesome" />
-
+                                <button onclick="makeInputsEmpty()"
+                                    class="btn btn-outline-warning px-4 mx-3 rounded-pill" id="btnDelete">Clear
+                                    Form</button>
+                                <div class="d-flex justify-content-center align-items-center my-3">
+                                    <a href="#crude-display" class="bg-dark rounded-circle p-2"><i class="fa-solid fa-angle-down text-white"></i></a> 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
 
-<div class="w-100 d-flex justify-content-center">
-    <div class="p-2 bg-dark rounded-circle">
-       <a href="#crude-display"><i class="fa-solid fa-angle-down text-white"></i></a> 
-    </div>
-</div>
+
+
     </div>
 
 
-<div class="crude-display py-5 " id="crude-display">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <table class="table table-dark table-striped text-center">
-                    <thead>
-                        <tr>
-                            <td>Index</td>
-                            <td>Product Name</td>
-                            <td>Product Price</td>
-                            <td>Product Catgory</td>
-                            <td>Product Desc</td>
-                            <td>Date Add</td>
-                            <td> Delete Product</td>
-                            <td> Update Product</td>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    </tbody>
-                </table>
+
+    
+
+    <div class="crude-display py-1 " id="crude-display">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="d-flex flex-column align-items-center">
+                        <label for="SearchProduct" class="mt-5">Search Product :</label>
+                        <input type="text" class="form-control my-2 search" placeholder="&#xF002; Search"
+                            style="font-family:Arial, FontAwesome" />
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="counter-item p-1 d-flex justify-content-between  align-items-center">
+                        <i id="remove" onclick="clearData()" class="fa-solid fa-trash fs-3  my-3 d-allData "></i>
+                        <div class="">
+                            <div class="d-inline-block">
+                                <p>item :</p>
+                            </div>
+                            <div class="d-inline-block counter-Item text-center shadow text-white">
+                                <p id="counter">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-dark table-striped text-center">
+                        <thead>
+                            <tr>
+                                <td>Index</td>
+                                <td>Product Name</td>
+                                <td>Product Price</td>
+                                <td>Product Catgory</td>
+                                <td>Product Desc</td>
+                                <td>Date Add</td>
+                                <td> Delete Product</td>
+                                <td> Update Product</td>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+
+
+
+
+    <!-- <div class="counter-item p-1 d-flex justify-content-between  align-items-center">       
+    <i id="remove" onclick="clearData()" class="fa-solid fa-trash fs-3  my-3 d-allData"></i>
+    <div>
+        <div class="d-inline-block"><p>item :</p></div>
+        <div class="d-inline-block counter-Item text-center shadow text-white"><p id="counter">0</p></div>
+    </div>      
+        </div> -->
 
     <footer class="bg-dark py-2">
         <p class="text-center text-muted">
@@ -104,3 +136,7 @@
 </body>
 
 </html>
+
+
+
+clearData()
