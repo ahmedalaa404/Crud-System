@@ -11,6 +11,9 @@ let searchInputs=document.getElementById('searchInputs');
 let btnAdd=document.getElementById("btnAdd");
 let btnUpdate=document.getElementById("btnUpdate");
 let btnDelete=document.getElementById("btnDelete");
+let cansle=document.getElementById("cansle");
+let deletData=document.getElementById("deletData");
+
 
 
 
@@ -22,6 +25,7 @@ let tbody=document.getElementById("tbody");
 let store;
 let concat=``;
 DateOFDay=new Date();
+let numberchangeUpdate;
 
 
 // Function to retrieve Data of Local storage
@@ -39,16 +43,36 @@ DateOFDay=new Date();
 
 })()
 
+
+
+
+
 // function remove Data in local storage
 function clearData()
 {
+document.getElementById("layer").classList.replace('d-none','d-block');
+}
+
+//  diplay diiv to choice for that if is the display block or none 
+function showDiv()
+{
+    document.getElementById("layer").classList.replace('d-block','d-none');
+}
+// if choice delet all Data 
+function remove()
+{
+
     localStorage.removeItem('ProductItem');
     store=[];
     displayData(store);
+    showDiv();
 }
 
 
-//  function add to object
+
+
+//  function add product to object
+
 function addProduct()
 { 
 Product=
@@ -69,6 +93,7 @@ Product=
 
 
 // function empty filds
+
 function makeInputsEmpty()
 {
     ProductName.value="";
@@ -77,6 +102,9 @@ function makeInputsEmpty()
     ProductDesc.value="";
 }
 
+
+
+// function used to diplay data 
 
 function displayData(list)
 {
@@ -94,7 +122,7 @@ function displayData(list)
          <i class="fa-solid fa-circle-minus text-danger fs-5" onclick=removeItem(${i})></i>
         </td>
         <td>
-         <i class="fa-solid fa-pen-to-square text-primary fs-5"></i></i>
+         <i class="fa-solid fa-pen-to-square text-primary fs-5" onclick="update(${i})"></i></i>
         </td>
     </tr>`;
     }
@@ -102,32 +130,112 @@ function displayData(list)
     counter.innerHTML=store.length;
 }
 
+// function used to remove product item from array and display in real time delete
 function removeItem(x)
 {
     store.splice(x,1);
     displayData(store);
     localStorage.setItem('ProductItem',JSON.stringify(store));
 }
+// function used to 
 
-// function Search(termSearch)
-// {
-//     searchStore=[];
-//     if(searchInputs.value.length>2)
-//     {
+function update(x)
+{
+    numberchangeUpdate=x;
+    // save number of index that have a process of update
+    ProductName.value=store[x].Name;
+    ProductCatgorey.value=store[x].Catgorey;
+    ProductPrice.value=store[x].Price;
+    ProductDesc.value=store[x].Desc;
+    btnAdd.classList.add('d-none');
+    btnUpdate.classList.replace('d-none','d-inline-block')
 
-//         for (var s=0; s<store.length;s++)
-//         {
-//             if(store[s].Name.toLowerCase().includes(termSearch.toLowerCase()) == true)
-//             {       
-//                 searchStore.push(store[s]);   
-//                 displayData(searchStore);
-//             }
-//         }
-//     }
-// else
-// {
-//     searchStore=[];
-//     displayData(store)
 
-// }
-// }
+    inputsStyle(ProductName);
+    inputsStyle(ProductDesc);
+    inputsStyle(ProductPrice);
+    inputsStyle(ProductCatgorey);
+}
+
+// function stylest the fileds of inputes to know that is update
+
+function inputsStyle(productInputs)
+{
+    productInputs.style.backgroundColor="#c0c0c09c";
+    productInputs.style.boxShadow="#596c6cb8 1px 0px 10px";
+    productInputs.style.fontSize="16px";
+}
+
+
+
+
+
+
+function changeUpdate()
+{
+    if(ProductName.value!=store[numberchangeUpdate].Name)
+    {
+        store[numberchangeUpdate].Name=ProductName.value;
+    }
+
+    if(ProductCatgorey.value!=store[numberchangeUpdate].Catgorey)
+    {
+        store[numberchangeUpdate].Catgorey==ProductCatgorey.value;
+    }
+
+
+    if(ProductPrice.value!=store[numberchangeUpdate].Price)
+    {
+     store[numberchangeUpdate].price==ProductPrice.value;
+    }
+
+
+    if(ProductDesc.value!=store[numberchangeUpdate].Desc)
+    {
+        store[numberchangeUpdate].Desc=ProductDesc.value;
+    }
+
+    localStorage.setItem('ProductItem',JSON.stringify(store));
+    makeInputsEmpty();
+    btnAdd.classList.replace('d-none','d-inline-block')
+    btnUpdate.classList.replace('d-inline-block','d-none')
+    displayData(store);
+    // when click update remove all style of inputs when devloper make when click button of icones update
+    removeInputsStyle(ProductName);
+    removeInputsStyle(ProductDesc);
+    removeInputsStyle(ProductPrice);
+    removeInputsStyle(ProductCatgorey);
+
+}
+function removeInputsStyle(productInputs)
+{
+    productInputs.style.backgroundColor="#fff";
+    productInputs.style.boxShadow="none";
+    productInputs.style.fontSize="16px";
+} 
+
+// function search of array
+
+
+function Search(termSearch)
+{
+    searchStore=[];
+    if(searchInputs.value.length>2)
+    {
+
+        for (var s=0; s<store.length;s++)
+        {
+            if(store[s].Name.toLowerCase().includes(termSearch.toLowerCase()) == true)
+            {       
+                searchStore.push(store[s]);   
+                displayData(searchStore);
+            }
+        }
+    }
+else
+{
+    searchStore=[];
+    displayData(store)
+
+}
+}

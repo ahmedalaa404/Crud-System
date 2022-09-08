@@ -30,6 +30,7 @@ font-size: 24px;
     box-shadow: none !important;
 }
 
+
 .fa-trash-can:hover 
 {
 color:rgba(255, 0, 0, 0.525);
@@ -72,8 +73,12 @@ color:rgb(133, 29, 0);
     background-color: rgba(22, 17, 17, 0.896);
     border-radius: 4px;
 }
-
 i
 {
     cursor: pointer;
+}
+.layer
+{
+    background-color: #20292b34;
+    z-index: 988;
 }
