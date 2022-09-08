@@ -70,4 +70,10 @@ color:rgb(133, 29, 0);
     width: 30px;    
     height: 30px;
     background-color: rgba(22, 17, 17, 0.896);
+    border-radius: 4px;
+}
+
+i
+{
+    cursor: pointer;
 }

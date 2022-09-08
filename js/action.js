@@ -4,9 +4,9 @@ let ProductCatgorey=document.getElementById("ProductCatgorey");
 let ProductPrice=document.getElementById("ProductPrice");
 let ProductDesc=document.getElementById('ProductDesc');
 let SearchProduct=document.getElementById("SearchProduct");
-let removeAll=document.getElementById('remove')
-let counter = document.getElementById('counter')
-
+let removeAll=document.getElementById('remove');
+let counter = document.getElementById('counter');
+let searchInputs=document.getElementById('searchInputs');
 // get button of html 
 let btnAdd=document.getElementById("btnAdd");
 let btnUpdate=document.getElementById("btnUpdate");
@@ -29,13 +29,13 @@ DateOFDay=new Date();
 {
     if(localStorage.getItem("ProductItem")!=null)
     {
-        store=JSON.parse(localStorage.getItem("ProductItem"))
+        store=JSON.parse(localStorage.getItem("ProductItem"));
     }
     else
     {
-        store=[]
+        store=[];
     }
-    displayData();
+    displayData(store);
 
 })()
 
@@ -44,9 +44,8 @@ function clearData()
 {
     localStorage.removeItem('ProductItem');
     store=[];
-    displayData();
+    displayData(store);
 }
-
 
 
 //  function add to object
@@ -58,12 +57,12 @@ Product=
         Price:ProductPrice.value,
         Catgorey:ProductCatgorey.value,
         Desc:ProductDesc.value,
+        date:`${DateOFDay.getDate()}-${DateOFDay.getMonth()+1}-${DateOFDay.getFullYear()}`,
     }
     store.push(Product);
-    console.log("Aaaaaa")
     localStorage.setItem('ProductItem',JSON.stringify(store));
     // add data in local storage
-    displayData();
+    displayData(store);
     makeInputsEmpty();
 }
 
@@ -79,23 +78,23 @@ function makeInputsEmpty()
 }
 
 
-function displayData()
+function displayData(list)
 {
     concat=``;
-    for(let i=0 ; i<store.length;i++)
+    for(let i=0 ; i<list.length;i++)
     {
         concat +=`<tr class="table-light">
         <td>${i}</td>
-        <td>${store[i].Name}</td>
-        <td>${store[i].Catgorey}</td>
-        <td>${store[i].Price}</td>
-        <td>${store[i].Desc}</td>
+        <td>${list[i].Name}</td>
+        <td>${list[i].Catgorey}</td>
+        <td>${list[i].Price}</td>
+        <td>${list[i].Desc}</td>
         <td>${DateOFDay.getDate()} - ${DateOFDay.getMonth()+1} -${DateOFDay.getFullYear()} </td>
         <td>
-        <a href=""> <i class="fa-solid fa-circle-minus text-danger fs-5" ></i> </a>
+         <i class="fa-solid fa-circle-minus text-danger fs-5" onclick=removeItem(${i})></i>
         </td>
         <td>
-        <a href=""> <i class="fa-solid fa-pen-to-square text-primary fs-5"></i></i> </a>
+         <i class="fa-solid fa-pen-to-square text-primary fs-5"></i></i>
         </td>
     </tr>`;
     }
@@ -103,8 +102,32 @@ function displayData()
     counter.innerHTML=store.length;
 }
 
+function removeItem(x)
+{
+    store.splice(x,1);
+    displayData(store);
+    localStorage.setItem('ProductItem',JSON.stringify(store));
+}
 
-// save Data in lovcal Storage
+// function Search(termSearch)
+// {
+//     searchStore=[];
+//     if(searchInputs.value.length>2)
+//     {
 
+//         for (var s=0; s<store.length;s++)
+//         {
+//             if(store[s].Name.toLowerCase().includes(termSearch.toLowerCase()) == true)
+//             {       
+//                 searchStore.push(store[s]);   
+//                 displayData(searchStore);
+//             }
+//         }
+//     }
+// else
+// {
+//     searchStore=[];
+//     displayData(store)
 
-
+// }
+// }
