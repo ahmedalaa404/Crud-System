@@ -13,22 +13,36 @@ let btnUpdate=document.getElementById("btnUpdate");
 let btnDelete=document.getElementById("btnDelete");
 let cansle=document.getElementById("cansle");
 let deletData=document.getElementById("deletData");
-
-
-
-
+let quoteWord=document.getElementById("quoteWords");
+let nameSpeaker=document.getElementById("nameSpeaker");
 // get tbody of table to show  a data 
 let tbody=document.getElementById("tbody");
-
-
 // variable used in js to store Data 
 let store;
 let concat=``;
 DateOFDay=new Date();
 let numberchangeUpdate;
+let quots=["Whatever it is, a person does not lose in any circumstance what God has bestowed upon him of honor.",
+"Had it not been for its tides, and if it were not for its magic, the owner of his heart would not wish for Sidon, seek refuge in your heart from the arrows of its sight.. Or die as love willed as a martyr, if you saw beauty and did not matter.. You were a coarse, dull person.",
+"Blessed is the love in which there is no owner and the other is owned.. Both are loyal to the other."];
+let speakers=["- Malik bin Nabi","- Elia Abu Madi", "- Jorge Luis Borges"];
+let rounded=parseInt(Math.random()*3);
+//  variable reguxe
+let reguxeName=/^[A-Z]/;
 
+// function tesst()
+// {
+// if(reguxeName.test("123")==true)
+// {
+//     return 321;
+// }
+// else
+// {
+//     return 123;
+// }
+// }
 
-// Function to retrieve Data of Local storage
+// Function to retrieve Data of Local storage and make a quote rounded 
 (function()
 {
     if(localStorage.getItem("ProductItem")!=null)
@@ -39,9 +53,12 @@ let numberchangeUpdate;
     {
         store=[];
     }
+    quoteWords.innerHTML=quots[rounded];
+    nameSpeaker.innerHTML=speakers[rounded];
     displayData(store);
-
 })()
+
+// reguxe
 
 
 
