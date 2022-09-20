@@ -18,16 +18,20 @@
 
 <body>
     
-
+<!-- when remove all data  -->
     <div id="layer" class="layer top-0 start-0 end-0 bottom-0 d-none w-100 position-fixed d-flex justify-content-center align-items-center">
         <div class="bg-white shadow d-flex justify-content-center align-items-center p-5 flex-column">
             <i class="fs-1 red fa-regular fa-exclamation text-danger"></i>
             <h3>Beware, you will delete everything</h3>
             <div class="d-flex justify-content-center align-items-center my-5">
-                <button id="cansle" class="btn btn-outline-dark mx-4" onclick="showDiv()">Cansle</button>
-                <button id="deletData"  class="btn btn-outline-danger" onclick="remove()">remove all Data</button>
+                <button id="cansle" class="btn btn-outline-dark mx-4">Cansle</button>
+                <button id="deletData"  class="btn btn-outline-danger">remove all Data</button>
             </div>
         </div>
+
+
+
+
 
     </div>
 
@@ -39,25 +43,25 @@
                         <div class="w-100">
                             <h1 class="text-center">Crude System</h1>
                             <label for="ProductName" class="ms-1">Product Name</label>
-                            <input type="text" class="form-control mt-2 mb-3" id="ProductName" required>
+                            <input type="text" class="form-control mt-2 mb-3 is-invalid" id="ProductName" required is >
 
                             <label for="ProductCatgorey" class="ms-1">Product category</label>
-                            <input type="text" class="form-control mt-2 mb-3" id="ProductCatgorey" required>
+                            <input type="text" class="form-control mt-2 mb-3 is-invalid" id="ProductCatgorey" required>
 
                             <label for="ProductPrice" class="ms-1">Product Price</label>
-                            <input type="number" class="form-control mt-2 mb-3" id="ProductPrice" required>
+                            <input type="number" class="form-control mt-2 mb-3 is-invalid" id="ProductPrice" required>
 
                             <label for="ProductDesc" class="ms-1">Product Desc</label>
-                            <textarea name="" type="text" class="form-control mt-2 mb-3" id="ProductDesc" cols="10"
+                            <textarea name="" type="text" class="form-control mt-2 mb-3 is-invalid" id="ProductDesc" cols="10"
                                 rows="4" required></textarea>
 
                             <div class="text-center py-1 position-relative">
-                                <button onclick="addProduct()" class="btn btn-outline-dark px-4 mx-3 rounded-pill"
+                                <button class="btn btn-outline-dark px-4 mx-3 rounded-pill"
                                     id="btnAdd">Add</button>
                                 <button class="btn btn-outline-primary px-4 mx-3 d-none rounded-pill"
-                                    id="btnUpdate" onclick="changeUpdate()">Update</button>
-                                <button onclick="makeInputsEmpty()"
-                                    class="btn btn-outline-warning px-4 mx-3 rounded-pill" id="btnDelete">Clear
+                                    id="btnUpdate">Update</button>
+                                <button
+                                    class="btn btn-outline-warning px-4 mx-3 rounded-pill" id="btnClear">Clear
                                     Form</button>
                                 <div class="d-flex justify-content-center align-items-center my-3">
                                     <a href="#crude-display" class="bg-dark rounded-circle p-2"><i class="fa-solid fa-angle-down text-white"></i></a> 
@@ -85,13 +89,13 @@
                 <div class="col-lg-12">
                     <div class="d-flex flex-column align-items-center">
                         <label for="SearchProduct" class="mt-5">Search Product :</label>
-                        <input oninput="Search(searchInputs.value)" id="searchInputs" type="text" class="form-control my-2 search" placeholder="&#xF002; Search"
+                        <input id="searchInputs" type="text" class="form-control my-2 search" placeholder="&#xF002; Search"
                             style="font-family:Arial, FontAwesome" />
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="counter-item p-1 d-flex justify-content-between  align-items-center">
-                        <i id="remove" onclick="clearData()" class="fa-solid fa-trash fs-3  my-3 d-allData "></i>
+                        <i id="remove" class="fa-solid fa-trash fs-3  my-3 d-allData "></i>
 
                         <div class="">
                             <div class="d-inline-block">
