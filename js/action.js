@@ -23,7 +23,7 @@ let deletData=document.getElementById("deletData");
 
 //  event static
 cansle.addEventListener("click",showDiv);
-deletData.addEventListener("clcik",remove);
+deletData.addEventListener("click",remove);
 
 // get tbody of table to show  a data 
 let tbody=document.getElementById("tbody");
@@ -134,7 +134,6 @@ function showDiv()
 // if choice delet all Data 
 function remove()
 {
-
     localStorage.removeItem('ProductItem');
     store=[];
     displayData(store);
