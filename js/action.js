@@ -305,7 +305,7 @@ function removeInputsStyle(productInputs)
 
 function Search(termSearch)
 {
-    searchStore=[];
+    let searchStore=[];
     if(searchInputs.value.length>2)
     {
         for (var s=0; s<store.length;s++)
@@ -324,7 +324,7 @@ else
 }
 }
 searchInputs.addEventListener("input",function(){
-    Search(this);
+    Search(this.value);
 })
 
 
