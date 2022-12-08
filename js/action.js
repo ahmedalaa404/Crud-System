@@ -1,57 +1,57 @@
 // get inputs of html 
 
 "use strict"
-let ProductName=document.getElementById("ProductName");
-let ProductCatgorey=document.getElementById("ProductCatgorey");
-let ProductPrice=document.getElementById("ProductPrice");
-let ProductDesc=document.getElementById('ProductDesc');
-let SearchProduct=document.getElementById("SearchProduct");
-let removeAll=document.getElementById('remove');
-let counter = document.getElementById('counter');
-let searchInputs=document.getElementById('searchInputs');
+const ProductName=document.getElementById("ProductName");
+const ProductCatgorey=document.getElementById("ProductCatgorey");
+const ProductPrice=document.getElementById("ProductPrice");
+const ProductDesc=document.getElementById('ProductDesc');
+const SearchProduct=document.getElementById("SearchProduct");
+const removeAll=document.getElementById('remove');
+const counter = document.getElementById('counter');
+const searchInputs=document.getElementById('searchInputs');
 
 // random sentences appearing
 let quoteWords=document.getElementById("quoteWords");
 let nameSpeaker=document.getElementById("nameSpeaker");
 
 // get button of html 
-let btnAdd=document.getElementById("btnAdd");
-let btnUpdate=document.getElementById("btnUpdate");
-let btnClear=document.getElementById("btnClear");
-let cansle=document.getElementById("cansle");
-let deletData=document.getElementById("deletData");
+const btnAdd=document.getElementById("btnAdd");
+const btnUpdate=document.getElementById("btnUpdate");
+const btnClear=document.getElementById("btnClear");
+const cansle=document.getElementById("cansle");
+const deletData=document.getElementById("deletData");
 
 //  event static
 cansle.addEventListener("click",showDiv);
 deletData.addEventListener("click",remove);
 
 // get tbody of table to show  a data 
-let tbody=document.getElementById("tbody");
+const tbody=document.getElementById("tbody");
 
 
 // variable used in js to store Data 
 let store;
 
-let concat=``;
+const concat=``;
 
- let DateOFDay=new Date();
+ const DateOFDay=new Date();
 
 let numberchangeUpdate;
 
 // random sentences appearing
 
-let quots=["Whatever it is, a person does not lose in any circumstance what God has bestowed upon him of honor.",
+const quots=["Whatever it is, a person does not lose in any circumstance what God has bestowed upon him of honor.",
 "Had it not been for its tides, and if it were not for its magic, the owner of his heart would not wish for Sidon, seek refuge in your heart from the arrows of its sight.. Or die as love willed as a martyr, if you saw beauty and did not matter.. You were a coarse, dull person.",
 "Blessed is the love in which there is no owner and the other is owned.. Both are loyal to the other."];
-let speakers=["- Malik bin Nabi","- Elia Abu Madi", "- Jorge Luis Borges"];
-let rounded=parseInt(Math.random()*3);
+const speakers=["- Malik bin Nabi","- Elia Abu Madi", "- Jorge Luis Borges"];
+const rounded=parseInt(Math.random()*3);
 
 
 //  variable reguxe
-let reguxeName=/^[a-zA-Z1-9 ]{3,20}$/;
-let reguxNumber=/^[1-9][0-9]{1,12}/;
-let reguxCatgorey=/^[a-z]{2,10}$/;
-let reguxDes=/^[a-z]{2,40}[a-zA-Z1-9 ,]{2,140}$/;
+const reguxeName=/^[a-zA-Z1-9 ]{3,20}$/;
+const reguxNumber=/^[1-9][0-9]{1,12}/;
+const reguxCatgorey=/^[a-z]{2,10}$/;
+const reguxDes=/^[a-z]{2,40}[a-zA-Z1-9 ,]{2,140}$/;
 
 // Function to retrieve Data of Local storage and make a quote rounded 
 (function()
